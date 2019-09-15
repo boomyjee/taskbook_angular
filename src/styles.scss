@@ -1,0 +1,11 @@
+.modal.show .modal-dialog {
+  width: 80vw;
+  max-width: 600px;
+  margin: auto;
+
+  button.fas.fa-times {
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+}
