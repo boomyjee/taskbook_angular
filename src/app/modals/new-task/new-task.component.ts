@@ -3,6 +3,8 @@ import { Subject } from 'rxjs/Subject';
 import { IModalDialog, IModalDialogOptions, IModalDialogButton } from 'ngx-modal-dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { ToolsService } from '../../tools.service';
+
 @Component({
   selector: 'app-new-task',
   templateUrl: './new-task.component.html',
@@ -15,7 +17,10 @@ export class NewTaskComponent implements IModalDialog {
 
   @ViewChild('fileInput') fileInput: ElementRef;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private tools: ToolsService
+  ) {
     this.actionButtons = [
       { text: 'Cancel', buttonClass: 'btn btn-link', onAction: () => true },
       { text: 'Save', onAction: () => this.saveChanges() }
@@ -40,11 +45,12 @@ export class NewTaskComponent implements IModalDialog {
     });
   }
 
-  onFileChange(e) {
-    if(e.target.files.length > 0) {
-      let file = e.target.files[0];
-      this.newTaskForm.get('image').setValue(file);
-    }
+  onFileChange(ev) {
+    this.tools
+      .resizeImg(ev)
+      .subscribe({
+        next: (data) => this.newTaskForm.get('image').setValue(data)
+      });
   }
 
   saveChanges(): any {

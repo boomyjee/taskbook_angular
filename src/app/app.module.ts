@@ -14,6 +14,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { NewTaskComponent } from './modals/new-task/new-task.component';
 import { TaskService } from './task.service';
+import { ToolsService } from './tools.service';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { TaskService } from './task.service';
     ToastModule.forRoot()
   ],
   providers: [
-    TaskService
+    TaskService,
+    ToolsService
   ],
   bootstrap: [AppComponent]
 })

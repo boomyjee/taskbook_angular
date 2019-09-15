@@ -40,11 +40,7 @@ export class TaskService {
     this.toastr.setRootViewContainerRef(ref);
 
     if(res.status === 'error') {
-      console.log(res.message)
-
-      if (!options || !options.doNotNotificate) {
-        this.toastr.error('Something went wrong', 'Oops!');
-      }
+      this.toastr.error('Something went wrong', 'Oops!');
 
       return null;
     }
