@@ -1,0 +1,14 @@
+.dropdown-menu-sorter {
+  position: inherit;
+  display: block;
+
+  margin: 20px 10px 0 0;
+}
+
+.dropdown-item {
+  cursor: pointer;
+
+  &.active {
+    color: white;
+  }
+}

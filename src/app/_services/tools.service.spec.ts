@@ -9,7 +9,9 @@ describe('ToolsService', () => {
     });
   });
 
-  it('should be created', inject([ToolsService], (service: ToolsService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should be created', () => {
+    inject([ToolsService], (service: ToolsService) => {
+      expect(service).toBeTruthy();
+    });
+  });
 });

@@ -1,0 +1,3 @@
+<div class="dropdown-wrapper">
+  <app-sorter-item *ngFor="let cfg of configs" [config]="cfg" [currentVal]="configMap[cfg.key]" (onSortChange)="selectConfig($event)"></app-sorter-item>
+</div>

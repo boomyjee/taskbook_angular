@@ -1,0 +1,7 @@
+<nav aria-label="pagination">
+  <ul class="pagination">
+    <li class="page-item"><a class="page-link" (click)="goBack()">Previous</a></li>
+    <li *ngFor="let pm of pageMarks" class="page-item" [class.active]="pm.isCurrent"><a class="page-link" (click)="pm.onAction(pm.title)">{{pm.title}}</a></li>
+    <li class="page-item"><a class="page-link" (click)="goNext()">Next</a></li>
+  </ul>
+</nav>

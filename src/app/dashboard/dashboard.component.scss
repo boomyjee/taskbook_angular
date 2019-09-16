@@ -1,0 +1,21 @@
+.dashboard {
+  padding: 20px;
+}
+
+.dashboard__header-sorter {
+  display: flex;
+}
+
+.dashboard__header-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-actions__item_route-link {
+  text-decoration: underline;
+}
+
+.dashboard__header-greeting {
+  margin-left: auto;
+}

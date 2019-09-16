@@ -3,7 +3,7 @@ import { Subject } from 'rxjs/Subject';
 import { IModalDialog, IModalDialogOptions, IModalDialogButton } from 'ngx-modal-dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
-import { ToolsService } from '../../tools.service';
+import { ToolsService } from '../../_services/tools.service';
 
 @Component({
   selector: 'app-new-task',
@@ -15,6 +15,8 @@ export class NewTaskComponent implements IModalDialog {
   private closeDialogSubject: Subject<any>;
   private newTaskForm: FormGroup;
 
+  private previewShown: boolean = false;
+
   @ViewChild('fileInput') fileInput: ElementRef;
 
   constructor(
@@ -22,6 +24,7 @@ export class NewTaskComponent implements IModalDialog {
     private tools: ToolsService
   ) {
     this.actionButtons = [
+      { text: 'Preview', buttonClass: 'btn btn-light btn-preview', onAction: () => this.togglePreview() },
       { text: 'Cancel', buttonClass: 'btn btn-link', onAction: () => true },
       { text: 'Save', onAction: () => this.saveChanges() }
     ];
@@ -31,6 +34,20 @@ export class NewTaskComponent implements IModalDialog {
 
   dialogInit(reference: ComponentRef<IModalDialog>, options: Partial<IModalDialogOptions<any>>) {
     this.closeDialogSubject = options.data.subject;
+  }
+
+  togglePreview() {
+    const newTaskForm = this.newTaskForm;
+
+    if (
+      newTaskForm.invalid ||
+      newTaskForm.pristine ||
+      !newTaskForm.get('image').value
+    ) {
+      return false;
+    }
+
+    this.previewShown = !this.previewShown;
   }
 
   createForm() {

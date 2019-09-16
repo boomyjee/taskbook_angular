@@ -1,0 +1,26 @@
+<div class="card" [class.success]="task.status">
+  <img class="card-img-top" src={{task.imagePath}} alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{task.username}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{task.email}}</h6>
+
+    <p *ngIf="!isEditMode" class="card-text">{{task.text}}</p>
+    <div *ngIf="isEditMode && isEditable" class="form-group">
+      <textarea class="form-control" id="tasktext" rows="3" [(ngModel)]="newTaskText"></textarea>
+    </div>
+
+    <a *ngIf="isEditable && !isEditMode" href='javascript:void(0)' (click)="openEditMode()" class="card-link">Edit</a>
+
+    <div *ngIf="isEditMode && isEditable" class="edit-mode-wrapper">
+      <div>
+        <a href='javascript:void(0)' (click)="saveChanges()" class="card-link">Save</a>
+        <a href='javascript:void(0)' (click)="cancelEdits()" class="card-link">Cancel</a>
+      </div>
+
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" id="status" [(ngModel)]="newTaskStatus" />
+        <label class="form-check-label" for="status">Done</label>
+      </div>
+    </div>
+  </div>
+</div>

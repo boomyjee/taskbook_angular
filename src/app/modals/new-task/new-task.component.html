@@ -1,19 +1,20 @@
-<form [formGroup]="newTaskForm">
+<form [formGroup]="newTaskForm" *ngIf="!previewShown">
   <div class="form-group">
-    <label for="username">Username</label>
+    <label for="username">Username*</label>
     <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="username">
   </div>
   <div class="form-group">
-    <label for="useremail">Email address</label>
+    <label for="useremail">Email address*</label>
     <input type="email" class="form-control" id="useremail" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email">
     <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
   </div>
   <div class="form-group">
-    <label for="tasktext">Enter task text</label>
+    <label for="tasktext">Enter task text*</label>
     <textarea class="form-control" id="tasktext" rows="3" formControlName="text"></textarea>
   </div>
   <div class="form-group">
-    <label for="taskimage">Task image</label>
+    <label for="taskimage">Task image*</label>
     <input type="file" accept="image/x-png,image/gif,image/jpeg" class="form-control-file" id="taskimage" (change)="onFileChange($event)" #fileInput>
   </div>
 </form>
+<app-task-card-preview *ngIf="previewShown" [task]=newTaskForm.value></app-task-card-preview>

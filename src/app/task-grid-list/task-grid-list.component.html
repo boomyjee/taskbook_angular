@@ -1,0 +1,5 @@
+<div class="task-grid-list">
+  <div *ngFor="let task of tasks" class="task-grid-list__item">
+    <app-task-card [task]="task" [isEditable]="isLoggedIn"></app-task-card>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Injectable()
 export class ToolsService {
@@ -17,6 +18,10 @@ export class ToolsService {
     }
 
     return new File([u8arr], 'file_' + this.shortID() + '.png', { type: mime });
+  }
+
+  md5(str) {
+    return Md5.hashStr(str);
   }
 
   shortID() {

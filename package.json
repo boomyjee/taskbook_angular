@@ -1,12 +1,12 @@
 {
-  "name": "task-ua",
+  "name": "taskbook",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "ng test",
+    "test": "ng test --sourcemaps=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -24,7 +24,9 @@
     "core-js": "^2.4.1",
     "ng2-toastr": "^4.1.2",
     "ngx-modal-dialog": "^2.0.1",
+    "node-sass": "^4.14.1",
     "rxjs": "^5.5.6",
+    "ts-md5": "^1.2.4",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

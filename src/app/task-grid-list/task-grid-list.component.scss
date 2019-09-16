@@ -1,0 +1,10 @@
+.task-grid-list {
+  display: flex;
+  padding: 30px 0;
+  align-items: start;
+  justify-content: flex-start;
+}
+
+.task-grid-list__item:not(:last-child) {
+  margin-right: 20px;
+}

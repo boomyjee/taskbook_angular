@@ -2,8 +2,21 @@
   <div class="dashboard__header">
     <div class="dashboard__header-actions header-actions">
       <button (click)="openNewTaskDialog()" class="dashboard__header-action header-actions__item" type="button" name="button">Create New Task</button>
+
+      <div *ngIf="isLoggedIn" class="dashboard__header-greeting">
+        Hello, admin!
+      </div>
+      <button *ngIf="!isLoggedIn" class="dashboard__header-action header-actions__item header-actions__item_route-link btn btn-link" routerLink="/login">SignIn</button>
+      <button *ngIf="isLoggedIn" class="dashboard__header-action header-actions__item header-actions__item_route-link btn btn-link" (click)="logout()">SignOut</button>
+    </div>
+    <div class="dashboard__header-sorter">
+      <app-sorter [configs]="sorterConfigs" (onSortChange)="onSortChange($event)"></app-sorter>
     </div>
   </div>
-  <div class="dashboard__content"></div>
-  <div class="dashboard__footer"></div>
+  <div class="dashboard__content">
+    <app-task-grid-list [tasks]="tasks" [isLoggedIn]="isLoggedIn"></app-task-grid-list>
+  </div>
+  <div class="dashboard__footer">
+    <app-paginator [currentPage]="currentPage" [total]="total" [perPage]="perPage" (onPageChange)="onPageChange($event)"></app-paginator>
+  </div>
 </div>

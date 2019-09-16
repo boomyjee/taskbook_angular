@@ -1,4 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NgModel, ReactiveFormsModule } from '@angular/forms';
+import { TaskCardPreviewComponent } from '../../task-card-preview/task-card-preview.component';
+import { TaskCardComponent } from '../../task-card/task-card.component';
+import { ToolsService } from '../../_services/tools.service';
 
 import { NewTaskComponent } from './new-task.component';
 
@@ -8,7 +12,9 @@ describe('NewTaskComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NewTaskComponent ]
+      imports: [ ReactiveFormsModule ],
+      declarations: [ NewTaskComponent, TaskCardComponent, TaskCardPreviewComponent, NgModel ],
+      providers: [ ToolsService ]
     })
     .compileComponents();
   }));
